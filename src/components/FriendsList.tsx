@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { FriendI } from "./interfaces/interfaces";
+import { FriendI } from "../interfaces/interfaces";
 
 type FriendListProps = {
   friends: FriendI[];

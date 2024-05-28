@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import Button from "./Button";
-import { FriendI } from "./interfaces/interfaces";
+import { FriendI } from "../interfaces/interfaces";
 
 type FormAddFriendProps = {
   addFriend: (friend: FriendI) => void;
