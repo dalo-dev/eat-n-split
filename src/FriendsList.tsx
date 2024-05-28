@@ -1,3 +1,4 @@
+import Button from "./Button";
 import { FriendI } from "./interfaces/interfaces";
 
 const initialFriends = [
@@ -21,9 +22,9 @@ const initialFriends = [
   },
 ];
 
-interface FriendProps {
+type FriendProps = {
   friend: FriendI;
-}
+};
 
 function FriendsList() {
   const friends: FriendI[] = initialFriends;
@@ -54,6 +55,8 @@ function Friend({ friend }: FriendProps) {
         </p>
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
+
+      <Button>Select</Button>
     </li>
   );
 }
