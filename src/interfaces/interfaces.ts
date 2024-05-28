@@ -1,5 +1,5 @@
 export interface FriendI {
-  id: number;
+  id: number | string;
   name: string;
   image: string;
   balance: number;
