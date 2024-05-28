@@ -3,25 +3,40 @@ import { FriendI } from "./interfaces/interfaces";
 
 type FriendListProps = {
   friends: FriendI[];
+  onSelection: (friend: FriendI) => void;
+  selectedFriend: FriendI | null;
 };
 
 type FriendProps = {
   friend: FriendI;
+  onSelection: (friend: FriendI) => void;
+  selectedFriend: FriendI | null;
 };
 
-function FriendsList({ friends }: FriendListProps) {
+function FriendsList({
+  friends,
+  selectedFriend,
+  onSelection,
+}: FriendListProps) {
   return (
     <ul>
       {friends.map((friend) => (
-        <Friend friend={friend} key={friend.id} />
+        <Friend
+          friend={friend}
+          key={friend.id}
+          selectedFriend={selectedFriend}
+          onSelection={onSelection}
+        />
       ))}
     </ul>
   );
 }
 
-function Friend({ friend }: FriendProps) {
+function Friend({ friend, selectedFriend, onSelection }: FriendProps) {
+  const isSelected = selectedFriend?.id === friend.id;
+
   return (
-    <li>
+    <li className={isSelected ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
 
@@ -37,7 +52,9 @@ function Friend({ friend }: FriendProps) {
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
 
-      <Button>Select</Button>
+      <Button onClick={() => onSelection(friend)}>
+        {isSelected ? "Close" : "Select"}
+      </Button>
     </li>
   );
 }
